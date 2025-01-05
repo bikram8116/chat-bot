@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <nav className="bg-gray-200 p-4 flex justify-between items-center">
+    <nav className="bg-gray-200 p-4 flex flex-wrap justify-between items-center">
       {/* Left Section: Logo */}
       <div className="flex items-center">
         <div className="w-8 h-8 bg-blue-500 rounded-full mr-2"></div>
@@ -10,7 +10,7 @@ function Navbar() {
       </div>
 
       {/* Center Section: Navigation Links */}
-      <div className="flex space-x-6 text-sm font-medium">
+      <div className="hidden md:flex space-x-6 text-sm font-medium">
         <a href="#home" className="text-gray-800">
           Home
         </a>
@@ -63,6 +63,26 @@ function Navbar() {
 
         {/* User Avatar */}
         <div className="w-8 h-8 bg-gray-500 rounded-full"></div>
+      </div>
+
+      {/* Mobile Menu Toggle (Hamburger Icon) */}
+      <div className="block md:hidden">
+        <button className="text-gray-800">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
       </div>
     </nav>
   );
