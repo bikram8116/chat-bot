@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
 function Sidebar({ setSelectedCandidate }) {
-  const [isProjectExpanded, setProjectExpanded] = useState(false);
-  const [isCandidatesExpanded, setCandidatesExpanded] = useState(false);
+  const [isProjectExpanded, setProjectExpanded] = useState(true);
+  const [isCandidatesExpanded, setCandidatesExpanded] = useState(true);
+  const [isCandidate, setCandidate] = useState(0);
+  const [selectedCandidateIndex, setSelectedCandidateIndex] = useState(0);
+
 
   return (
     <div className="w-full md:w-1/4 bg-gray-50 p-4">
@@ -22,21 +25,22 @@ function Sidebar({ setSelectedCandidate }) {
               placeholder="Search"
               className="w-full p-2 mb-2 border border-gray-300 rounded text-sm"
             />
-                        <div className="space-y-2">
-                            {/* Project Items */}
-                            {[
-                                { name: "UI/UX Designer", count: "+35" },
-                                { name: "Application Developer", count: "+10" },
-                                { name: "Automation Tester", count: "+10" },
-                                { name: "Business Analyst", count: "+10" },
-                                { name: "Business Analyst", count: "+10" },
-                                { name: "Application Developer", count: "+10" },
-                                { name: "Automation Tester", count: "+10" },
-                                { name: "Business Analyst", count: "+10" },
-                            ].map((project, index) => (
+            <div className="space-y-2 ">
+              {/* Project Items */}
+              {[
+                { name: "UI/UX Designer", count: "+35" },
+                { name: "Application Developer", count: "+10" },
+                { name: "Automation Tester", count: "+10" },
+                { name: "Business Analyst", count: "+10" },
+                { name: "Business Analyst", count: "+10" },
+                { name: "Application Developer", count: "+10" },
+                { name: "Automation Tester", count: "+10" },
+                { name: "Business Analyst", count: "+10" },
+              ].map((project, index) => (
                 <div
                   key={index}
-                  className="flex justify-between items-center p-2 bg-gray-100 rounded"
+                  className={isCandidate == index? "flex justify-between items-center p-2 bg-blue-100 rounded" : "flex justify-between items-center p-2 bg-grey-100 rounded"}
+                  onClick={()=>setCandidate(index)}
                 >
                   <span className="font-medium text-sm">{project.name}</span>
                   <div className="flex -space-x-2">
@@ -88,9 +92,9 @@ function Sidebar({ setSelectedCandidate }) {
                 .map((candidate, index) => (
                   <div
                     key={index}
-                    className="relative flex flex-col p-4 bg-gray-100 rounded min-h-[120px] overflow-hidden"
-                    onClick={() => setSelectedCandidate(candidate)} 
-                  >
+                    className={selectedCandidateIndex == index ? "relative flex flex-col p-4 bg-blue-100 rounded min-h-[120px] overflow-hidden" : "relative flex flex-col p-4 bg-gray-100 rounded min-h-[120px] overflow-hidden"}
+                    onClick={() => setSelectedCandidateIndex(index)}
+                  > 
                     {/* Top Section */}
                     <div className="flex items-center mb-2">
                       <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center mr-2">

@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import MainContent from "../components/MainContent";
 
 function Home() {
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [selectedCandidate, setSelectedCandidate] = useState(true);
 
   return (
     <div className="min-h-screen flex flex-col">
